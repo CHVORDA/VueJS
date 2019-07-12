@@ -1,0 +1,55 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Vue</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" v-bind:style="rootStyleObject">
+			<h1>Hello</h1>
+			<button type="submit" v-on:click="getRandomColor">Click me 😉</button>
+		</div>
+	</body>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				rootStyleObject: {
+					background: '#fff'
+				},
+				message: ''
+			},
+			methods: {
+				getRandomColor: function () {
+					var letters = '0123456789ABCDEF';
+					var color = '#';
+					for (var i = 0; i < 6; i++) {
+						color += letters[Math.floor(Math.random() * 16)];
+					}
+					console.log(color);
+					app.rootStyleObject.background = color;
+				}
+			},
+		});
+	</script>
+	<style>
+		body {
+			margin: 0;
+		}
+		#app {
+			font-family: 'Avenir', Helvetica, Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-align: center;
+			color: #2c3e50;
+			position: fixed;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			transition: background 0.5s ease-in-out;
+		}
+	</style>
+</html>
