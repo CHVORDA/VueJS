@@ -6,8 +6,10 @@
 	</head>
 	<body>
 		<div id="app" v-bind:style="rootStyleObject">
-			<h1>Hello</h1>
-			<button type="submit" v-on:click="getRandomColor">Click me 😉</button>
+			<div class="welcome-message">
+				<h1>Hello</h1>
+				<button @click="getRandomColor">Click me 😉</button>
+			</div>
 		</div>
 	</body>
 	<script>
@@ -26,10 +28,9 @@
 					for (var i = 0; i < 6; i++) {
 						color += letters[Math.floor(Math.random() * 16)];
 					}
-					console.log(color);
-					app.rootStyleObject.background = color;
+					this.rootStyleObject.background = color;
 				}
-			},
+			}
 		});
 	</script>
 	<style>
@@ -50,6 +51,27 @@
 			align-items: center;
 			flex-direction: column;
 			transition: background 0.5s ease-in-out;
+		}
+		.welcome-message {
+			width: 15%;
+			padding: 35px;
+			border: 4px solid #2c3e50;
+			border-radius: 15px;
+			background: #e4feff;
+		}
+		.welcome-message h1 {
+			margin-top: 0;
+		}
+		.welcome-message button {
+			border: 1px solid #2c3e50;
+			border-radius: 5px;
+			padding: 3px 15px;
+			color: #2c3e50;
+			background: #e4feff;
+			outline: none;
+		}
+		.welcome-message button:active {
+			background: #2c3e50;
 		}
 	</style>
 </html>
